@@ -38,11 +38,11 @@ function App() {
       </Row>
 
       <Row>
-        <Col span={12} offset={6}>
+        <Col span={14} offset={4}>
       <hr />
           <h3>Examples</h3>
           <ul>
-            {/* <li>
+            <li>
               <URLTruncation url={"https://www.npmjs.com/package/react-truncate"} limit={30} />
             </li>
             <li>
@@ -50,7 +50,49 @@ function App() {
             </li>
             <li>
               <URLTruncation url={"https://www.silabs.com/documents/public/data-sheets/C8051F12x-13x.pdf"} limit={30} />
-            </li> */}
+            </li>
+            <hr />
+            <h4>Given Examples</h4>
+            <li>
+              <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 26):</b> <br />
+              <b>Output - </b>
+              <URLTruncation url={"http://www.foobar.com/abc/def/ghi/index.html"} limit={26} />
+            </li>
+            <hr />
+            <li><b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 26):</b> <br />
+              <b>Output - </b>
+              <URLTruncation url={"https://www.foobar.com/abc/def/ghi/jkl/"} limit={26} />
+            </li>
+            <hr />
+            <li><b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 1):</b> <br />
+              <b>Output - </b>
+              <URLTruncation url={"https://www.foobar.com/abc/def/ghi/jkl/"} limit={1} />
+            </li>
+            <hr />
+            <li>
+            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 35):</b> <br />
+              <b>Output - </b>
+
+              <URLTruncation url={"http://www.foobar.com/search/?q=foo&page=bar"} limit={35} />
+            </li>
+            <hr />
+            <li>
+            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 20):</b> <br />
+              <b>Output - </b>
+              <URLTruncation url={"http://www.foobar.com/search?q=foo&page=bar"} limit={20} />
+            </li>
+            <hr />
+            <li>
+            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 12):</b> <br />
+              <b>Output - </b>
+              <URLTruncation url={"http://www.foobar.com/search/?q=foo&page=bar"} limit={12} />
+            </li>
+            <hr />
+            <li>
+            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 12):</b> <br />
+              <b>Output - </b>
+              <URLTruncation url={"http://www.foobar.com/foo-bar-foo-bar.html"} limit={12} />
+            </li>
           </ul>
         </Col>
       </Row>
