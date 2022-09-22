@@ -42,7 +42,7 @@ function App() {
       <hr />
           <h3>Examples</h3>
           <ul>
-            <li>
+            {/* <li>
               <URLTruncation url={"https://www.npmjs.com/package/react-truncate"} limit={30} />
             </li>
             <li>
@@ -50,7 +50,7 @@ function App() {
             </li>
             <li>
               <URLTruncation url={"https://www.silabs.com/documents/public/data-sheets/C8051F12x-13x.pdf"} limit={30} />
-            </li>
+            </li> */}
           </ul>
         </Col>
       </Row>
