@@ -2,7 +2,7 @@ import logo from './logo.svg';
 
 import URLTruncation from './Components/URLTruncation';
 import { DownloadOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row } from 'antd';
+import { Button, Col, Form, Input, InputNumber, Row } from 'antd';
 import { useState } from 'react';
 
 import { urlToURLTruncation } from "./Components/URLTruncation"
@@ -14,9 +14,9 @@ function App() {
   })
 
   let formSubmit = (e)=>{
-    e.preventDefault()
+    // console.log(e)
     setState(prev=>{
-      return {...prev, result: urlToURLTruncation(e.target.value)}
+      return {...prev, result: urlToURLTruncation(e.url, e.limit)}
     })
   }
 
@@ -26,14 +26,19 @@ function App() {
 
       <Row>
         <Col span={12} offset={6}>
-          <form onSubmit={formSubmit}>
+          <Form  onFinish={(e)=>formSubmit(e)} initialValues={{url:'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity', limit:65535}} >
             <h1>URL Truncator</h1>
-            <Form.Item>
-              <Input placeholder="Enter URL to truncate" type='text' name='url' id='url' onChange={formSubmit} />
+            <Form.Item  name='url' id='url' label='URL'>
+              <Input placeholder="Enter URL to truncate" type='text' />
             </Form.Item>
+            <Form.Item name='limit' id='limit' label='Each Parts Limits'>
+              <InputNumber name='limit' placeholder="Enter limit truncate" />
+            </Form.Item>
+              <Button  type="primary" htmlType="submit" >Submit</Button>
+            
             <h2>Result</h2>
-            Output - {state.result}
-          </form>
+              Output - {state.result}
+          </Form>
         </Col>
       </Row>
 
@@ -59,37 +64,37 @@ function App() {
               <URLTruncation url={"http://www.foobar.com/abc/def/ghi/index.html"} limit={26} />
             </li>
             <hr />
-            <li><b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 26):</b> <br />
+            <li><b>Given URL - https://www.foobar.com/abc/def/ghi/jkl/ ( Limit = 26):</b> <br />
               <b>Output - </b>
               <URLTruncation url={"https://www.foobar.com/abc/def/ghi/jkl/"} limit={26} />
             </li>
             <hr />
-            <li><b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 1):</b> <br />
+            <li><b>Given URL - https://www.foobar.com/abc/def/ghi/jkl/ ( Limit = 1):</b> <br />
               <b>Output - </b>
               <URLTruncation url={"https://www.foobar.com/abc/def/ghi/jkl/"} limit={1} />
             </li>
             <hr />
             <li>
-            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 35):</b> <br />
+            <b>Given URL - http://www.foobar.com/search/?q=foo&page=bar ( Limit = 35):</b> <br />
               <b>Output - </b>
 
               <URLTruncation url={"http://www.foobar.com/search/?q=foo&page=bar"} limit={35} />
             </li>
             <hr />
             <li>
-            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 20):</b> <br />
+            <b>Given URL - http://www.foobar.com/search?q=foo&page=bar ( Limit = 20):</b> <br />
               <b>Output - </b>
               <URLTruncation url={"http://www.foobar.com/search?q=foo&page=bar"} limit={20} />
             </li>
             <hr />
             <li>
-            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 12):</b> <br />
+            <b>Given URL - http://www.foobar.com/search/?q=foo&page=bar ( Limit = 12):</b> <br />
               <b>Output - </b>
               <URLTruncation url={"http://www.foobar.com/search/?q=foo&page=bar"} limit={12} />
             </li>
             <hr />
             <li>
-            <b>Given URL - http://www.foobar.com/abc/def/ghi/index.html ( Limit = 12):</b> <br />
+            <b>Given URL - http://www.foobar.com/foo-bar-foo-bar.html ( Limit = 12):</b> <br />
               <b>Output - </b>
               <URLTruncation url={"http://www.foobar.com/foo-bar-foo-bar.html"} limit={12} />
             </li>
