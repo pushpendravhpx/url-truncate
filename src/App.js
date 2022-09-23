@@ -71,7 +71,7 @@ function App() {
             <hr />
             <li><b>Given URL - https://www.foobar.com/abc/def/ghi/jkl/ ( Limit = 1):</b> <br />
               <b>Output - </b>
-              <URLTruncation url={"https://www.foobar.com/abc/def/ghi/jkl/"} limit={1} />
+              <URLTruncation url={"https://www.foobar.com/abc/def/ghi/jkl/"} limit={17} />
             </li>
             <hr />
             <li>
